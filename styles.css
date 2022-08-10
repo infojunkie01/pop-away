@@ -77,22 +77,34 @@ button:hover{
     background-color:  rgba(255, 255, 255, .8);
 }
 
+#pop-bubble{
+    position: relative;
+}
 #pop-bubble p{
     margin-top: 5em;
+    z-index: 5; 
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    text-align: center;
 }
 #note{
     font-size: 12px;
 }
+
 #bubble{
-    border-radius: 300px;
-    width: 800px;
+    border-radius: 500px;
+    z-index: 0; 
+    padding: 0;
 }
+
 #bubble:hover{
     background-color: transparent;
 }
 
-#bubble img{
-    height: 800px;
+#bubble-img{
+    max-height: 95vh;
+    max-width: 95vw;
 }
 
 #btn-new, #btn-home{
