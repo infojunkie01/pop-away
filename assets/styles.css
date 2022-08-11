@@ -18,7 +18,9 @@ button{
     border-width: 1px;
     border-color: rgba(255, 255, 255, .8);
     background-color: transparent;
+    color: rgba(0,0,0,.8) !important;
 }
+
 button:hover{
     background-color:  rgba(255, 255, 255, .8);
 }
@@ -42,17 +44,18 @@ textarea{
 
 #bg-1{
     background-image: url("../assets/images/desktop-bg-1.png");
+    opacity: .5;
 }
 
 #bg-2{
     background-image: url("../assets/images/desktop-bg-2.png");
+    opacity: .5;
 }
 
 #bg-1, #bg-2{
     width: 100vw;
-    height: 100vh;
+    height: 105vh;
     position: absolute;
-    opacity: .5;
     z-index: -100;
     margin-top: -15px;
     
@@ -226,8 +229,16 @@ section, #bg-1, #bg-2{
 /* media queries */
 
 @media screen and (max-width: 500px) {
+    body{
+        font-size: 18px;
+    }
+    
     #pop-bubble p{
         margin-top: .5em;
+    }
+
+    #bubble{
+        margin-top: 3em;
     }
 
     #start, textarea, #submit, #btn-new, #btn-home {

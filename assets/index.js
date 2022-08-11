@@ -55,6 +55,7 @@ function hideTextEntryShowNext() {
     $('#bubble-img').attr('src', './assets/images/bubble.png');
     $('#submit').removeClass('floating')
     $("#pop-bubble-text").show();
+    $("#bubble").show()
 }
 
 function hidePopBubbleShowNext() {
@@ -63,14 +64,16 @@ function hidePopBubbleShowNext() {
     $('#bubble').prop('disabled', true);
 
     setTimeout(() => {
+        $("#bubble").hide()
+    }, 500)
+
+    setTimeout(() => {
         $("#pop-bubble-text").fadeOut("slow");
-        playSound(choir, 0)
     }, 1000)
 
     setTimeout(() => {
         playSound(choir, 0)
     }, 2000)
-
 
     setTimeout(() => {
         popBubble = $('#pop-bubble')
