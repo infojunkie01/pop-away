@@ -1,9 +1,14 @@
+// import sounds
 var click = new Audio("./assets/sounds/click.wav");
 var pop = new Audio("./assets/sounds/pop.wav");
 var choir = new Audio("./assets/sounds/choir.wav");
 var harp = new Audio("./assets/sounds/harp.wav");
-var harp2 = new Audio("./assets/sounds/harp2.wav");
 
+choir.volume = 0.9;
+harp.volume = 0.9;
+
+
+// some helper functions
 function playSound(sound, sec){
     sound.currentTime = sec;
 	sound.play();
@@ -11,10 +16,6 @@ function playSound(sound, sec){
 
 function stopSound(sound){
 	sound.pause();
-}
-
-function addFloatingClass(){
-    $('#submit').addClass('floating')
 }
 
 function hideAndShowSections(current, next){
@@ -26,18 +27,25 @@ function hideAndShowSections(current, next){
     }
 }
 
+
+// functions called in html
+function addFloatingClass(){
+    $('#submit').addClass('floating')
+}
+
 function hideIntroShowNext() {
     playSound(click, 0)
 
+    $('#bg-1').fadeOut('slow')
+    $('#bg-2').fadeOut('slow')
     intro = $('#intro')
     textEntry = $('#text-entry')
     hideAndShowSections(intro, textEntry)
-
 }
 
 function hideTextEntryShowNext() {
     playSound(click, 0)
-    playSound(harp2, 2)
+    playSound(harp, 2)
     textEntry = $('#text-entry')
     popBubble = $('#pop-bubble')
     hideAndShowSections(textEntry, popBubble)
@@ -50,7 +58,7 @@ function hideTextEntryShowNext() {
 }
 
 function hidePopBubbleShowNext() {
-    stopSound(harp2)
+    stopSound(harp)
     playSound(pop, 0)
     $('#bubble').prop('disabled', true);
 
@@ -60,10 +68,15 @@ function hidePopBubbleShowNext() {
     }, 1000)
 
     setTimeout(() => {
+        playSound(choir, 0)
+    }, 2000)
+
+
+    setTimeout(() => {
         popBubble = $('#pop-bubble')
         end = $('#end')
         hideAndShowSections(popBubble, end)
-    }, 4000)
+    }, 7000)
 }
 
 function hideEndShowTextEntry() {
@@ -78,12 +91,15 @@ function hideEndShowTextEntry() {
 function hideEndShowIntro() {
     stopSound(choir)
     playSound(click, 0)
-
+    $('#bg-1').fadeIn('slow')
+    $('#bg-2').fadeIn('slow')
     end = $('#end')
     intro = $('#intro')
     hideAndShowSections(end, intro)
 }
 
+
+// make gif play on click
 var getGif = function () {
     var gif = [];
     $('#bubble-img').each(function () {
