@@ -1,64 +1,88 @@
+var click = new Audio("./assets/sounds/click.wav");
+var pop = new Audio("./assets/sounds/pop.wav");
+var choir = new Audio("./assets/sounds/choir.wav");
+var harp = new Audio("./assets/sounds/harp.wav");
+var harp2 = new Audio("./assets/sounds/harp2.wav");
+
+function playSound(sound, sec){
+    sound.currentTime = sec;
+	sound.play();
+}
+
+function stopSound(sound){
+	sound.pause();
+}
+
+function addFloatingClass(){
+    $('#submit').addClass('floating')
+}
+
+function hideAndShowSections(current, next){
+    if (current.css("display") == "block") {
+        current.hide();
+    }
+    if (next.css("display") == "none") {
+        next.show();
+    }
+}
+
 function hideIntroShowNext() {
-    var current = document.getElementById("intro");
-    if (current.style.display = "inline-block") {
-        current.style.display = "none";
-    }
-    var next = document.getElementById("text-entry");
-    if (next.style.display = "none") {
-        next.style.display = "inline-block";
-    }
+    playSound(click, 0)
+
+    intro = $('#intro')
+    textEntry = $('#text-entry')
+    hideAndShowSections(intro, textEntry)
+
 }
 
 function hideTextEntryShowNext() {
-    var x = document.getElementById("text-entry");
-    if (x.style.display = "inline-block") {
-        x.style.display = "none";
-    }
-    var y = document.getElementById("pop-bubble");
-    if (y.style.display = "none") {
-        y.style.display = "inline-block";
-    }
-    document.getElementById("thought").value = "";
-    
+    playSound(click, 0)
+    playSound(harp2, 2)
+    textEntry = $('#text-entry')
+    popBubble = $('#pop-bubble')
+    hideAndShowSections(textEntry, popBubble)
+
+    $('#textarea').val('');
+    $('#bubble').prop('disabled', false);
+    $('#bubble-img').attr('src', './assets/images/bubble.png');
+    $('#submit').removeClass('floating')
+    $("#pop-bubble-text").show();
 }
 
 function hidePopBubbleShowNext() {
+    stopSound(harp2)
+    playSound(pop, 0)
+    $('#bubble').prop('disabled', true);
+
     setTimeout(() => {
-        var current = document.getElementById("pop-bubble");
-        if (current.style.display = "inline-block") {
-            current.style.display = "none";
-        }
-        var next = document.getElementById("end");
-        if (next.style.display = "none") {
-            next.style.display = "inline-block";
-        }
-    }, 2000)
+        $("#pop-bubble-text").fadeOut("slow");
+        playSound(choir, 0)
+    }, 1000)
+
+    setTimeout(() => {
+        popBubble = $('#pop-bubble')
+        end = $('#end')
+        hideAndShowSections(popBubble, end)
+    }, 4000)
 }
 
 function hideEndShowTextEntry() {
-    var end = document.getElementById("end");
-    if (end.style.display = "inline-block") {
-        end.style.display = "none";
-    }
-    var y = document.getElementById("text-entry");
-    if (y.style.display = "none") {
-        y.style.display = "inline-block";
-    }
+    stopSound(choir)
+    playSound(click, 0)
 
+    end = $('#end')
+    textEntry = $('#text-entry')
+    hideAndShowSections(end, textEntry)
 }
 
 function hideEndShowIntro() {
+    stopSound(choir)
+    playSound(click, 0)
 
-    var end = document.getElementById("end");
-    if (end.style.display = "inline-block") {
-        end.style.display = "none";
-    }
-    var y = document.getElementById("intro");
-    if (y.style.display = "none") {
-        y.style.display = "inline-block";
-    }
+    end = $('#end')
+    intro = $('#intro')
+    hideAndShowSections(end, intro)
 }
-
 
 var getGif = function () {
     var gif = [];
@@ -69,7 +93,6 @@ var getGif = function () {
     return gif;
 }
 var gif = getGif();
-
 
 var image = [];
 

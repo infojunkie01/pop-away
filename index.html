@@ -9,11 +9,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/420965243b.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="text-center vh-100">
+    <button id="sound-icon">
+        <i id="sound-off" class="fa-solid fa-volume-off" style="display: block"></i>
+        <i id="sound-on" class="fa-solid fa-volume-high" style="display: none"></i>
+    </button>
+    
+    <iframe src="./assets/sounds/music.mp3" allow="autoplay" id="audio" style="display: none"></iframe> 
+    <audio id="player" autoplay loop>     
+        <source src="./assets/sounds/music.mp3" type="audio/mp3"> 
+    </audio> 
 
-    <section id="intro" class="container"  style="display: inline-block">
+    <section id="intro" class="container"  style="display: block">
         <h1 id="title" class="row justify-content-center ">Pop it away!</h1>
         <p class="row justify-content-center">
             <div class="col justify-content-center">
@@ -23,7 +33,7 @@
                 yourself of the thought.
             </div>
         </p>
-        <button id="start" class="m-5" onclick="hideIntroShowNext()">START</button>
+        <button id="start" class="m-5 floating" onclick="hideIntroShowNext()">START</button>
     </section>
 
     <section id="text-entry" class="container" style="display: none">
@@ -31,21 +41,21 @@
             Got something that clutters or weighs on your mind? Write it down to turn it into a bubble.
         </p>
         <Br>
-        <textarea id="thought" class="mt-2" placeholder="Enter text here"></textarea>
+        <textarea id="textarea" class="mt-2" placeholder="Enter text here" onfocus="addFloatingClass()"></textarea>
         <Br>
-        <button id="submit" class="m-5" onclick="hideTextEntryShowNext()">CREATE BUBBLE</button>
-        <p id="note">Note: Data entered is not stored.</p>
+        <button  id="submit" class="m-5" onclick="hideTextEntryShowNext()">CREATE BUBBLE</button>
+        <p id="note">(Text entered is not stored.)</p>
     </section>
 
     <section id="pop-bubble" class="container" style="display: none">
         <button id="bubble" class="row justify-content-center" onclick="hidePopBubbleShowNext()">
-            <img id="bubble-img" class="floating" src="./images/bubble.png" alt="Static Image" data-alt="./images/bubble.gif">
+            <img id="bubble-img" class="floating" src="./assets/images/bubble.png" alt="Static Image" data-alt="./assets/images/bubble.gif">
         </button>
-        <p class="row justify-content-center">Pop the bubble!</p>
+        <p id="pop-bubble-text" class="row justify-content-center">Click to pop the bubble!</p>
     </section>
 
     <section id="end" class="container" style="display: none">
-        <div class="col">
+        <div class="col floating">
             <button id='btn-new' class="mb-5" onclick="hideEndShowTextEntry()">POP ANOTHER BUBBLE</button>
             <Br>
             <button id='btn-home' class="" onclick="hideEndShowIntro()">RETURN HOME</button>

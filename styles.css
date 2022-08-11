@@ -10,6 +10,116 @@ body{
     display: flex;
 }
 
+section{
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+     -ms-animation: fadein 2s; /* Internet Explorer */
+      -o-animation: fadein 2s; /* Opera < 12.1 */
+         animation: fadein 2s;
+}
+
+#intro, #text-entry, #end{
+   margin: auto;
+}
+
+textarea{
+    width: 500px;
+    height: 100px;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.1);
+    border-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    border-width: .5px;
+    font-size: 1em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+button{
+    border: solid;
+    border-radius: 15px; 
+    padding: .2em 4em .2em 4em;
+    letter-spacing: .5em; 
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, .8);
+    background-color: transparent;
+}
+button:hover{
+    background-color:  rgba(255, 255, 255, .8);
+}
+
+#pop-bubble{
+    position: relative;
+}
+
+#pop-bubble p{
+    margin-top: 5em;
+    z-index: 5; 
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+#note{
+    font-size: 12px;
+}
+
+#bubble{
+    border-radius: 500px;
+    z-index: 0; 
+    padding: 0;
+    margin: auto;
+    max-width: 100%;
+    border: none;
+}
+
+#bubble:hover{
+    background-color: transparent;
+    outline: none;
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
+#bubble-img{
+    max-height: 95vh;
+    max-width: 95vw;
+}
+
+#btn-new, #btn-home{
+    border-radius: 100px;
+}
+
+#sound-icon{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 0;
+    border: none;
+    letter-spacing: 0;
+    opacity: .5;
+}
+
+#sound-icon:hover{
+    background-color: transparent;
+    opacity: 1;
+}
+
+.floating { 
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 10px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -40,87 +150,31 @@ body{
 }
 
 
-section{
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s; /* Firefox < 16 */
-     -ms-animation: fadein 2s; /* Internet Explorer */
-      -o-animation: fadein 2s; /* Opera < 12.1 */
-         animation: fadein 2s;
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
-#intro, #text-entry{
-   margin: auto;
-}
-textarea{
-    width: 500px;
-    height: 100px;
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.1);
-    border-color: #FFFFFF;
-    border-radius: 6px 6px 6px 6px;
-    border-width: .5px;
-    font-size: 1em;
-    line-height: 1.4em;
-    padding: 5px 8px;
-    transition: background-color 0.2s ease 0s;
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
-button{
-    border: solid;
-    border-radius: 15px; 
-    padding: .2em 4em .2em 4em;
-    letter-spacing: .5em; 
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, .8);
-    background-color: transparent;
-}
-button:hover{
-    background-color:  rgba(255, 255, 255, .8);
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
-#pop-bubble{
-    position: relative;
-}
-#pop-bubble p{
-    margin-top: 5em;
-    z-index: 5; 
-    position: absolute;
-    top: 5%;
-    width: 100%;
-    text-align: center;
-}
-#note{
-    font-size: 12px;
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
-#bubble{
-    border-radius: 500px;
-    z-index: 0; 
-    padding: 0;
-}
-
-#bubble:hover{
-    background-color: transparent;
-}
-
-#bubble-img{
-    max-height: 95vh;
-    max-width: 95vw;
-}
-
-#btn-new, #btn-home{
-    border-radius: 100px;
-}
-
-
-.floating { 
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
- 
-@keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
+/* Opera < 12.1 */
+@-o-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
