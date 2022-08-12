@@ -1,12 +1,6 @@
-// import sounds
-var click = new Audio("./assets/sounds/click.wav");
-var pop = new Audio("./assets/sounds/pop.wav");
-var choir = new Audio("./assets/sounds/choir.wav");
+// import some sounds
 var harp = new Audio("./assets/sounds/harp.wav");
-
-choir.volume = 0.9;
-harp.volume = 0.9;
-
+harp.volume = 0.8;
 
 // some helper functions
 function playSound(sound, sec){
@@ -34,6 +28,7 @@ function addFloatingClass(){
 }
 
 function hideIntroShowNext() {
+    var click = new Audio("./assets/sounds/click.wav");
     playSound(click, 0)
 
     $('#bg-1').fadeOut('slow')
@@ -44,6 +39,8 @@ function hideIntroShowNext() {
 }
 
 function hideTextEntryShowNext() {
+    var click = new Audio("./assets/sounds/click.wav");
+
     playSound(click, 0)
     playSound(harp, 2)
     textEntry = $('#text-entry')
@@ -59,8 +56,14 @@ function hideTextEntryShowNext() {
 }
 
 function hidePopBubbleShowNext() {
+    var choir = new Audio("./assets/sounds/choir.wav");
+    var pop = new Audio("./assets/sounds/pop.wav");
+
+    choir.volume = 0.8;
+
     stopSound(harp)
     playSound(pop, 0)
+
     $('#bubble').prop('disabled', true);
 
     setTimeout(() => {
@@ -83,16 +86,15 @@ function hidePopBubbleShowNext() {
 }
 
 function hideEndShowTextEntry() {
-    stopSound(choir)
+    var click = new Audio("./assets/sounds/click.wav");
     playSound(click, 0)
-
     end = $('#end')
     textEntry = $('#text-entry')
     hideAndShowSections(end, textEntry)
 }
 
 function hideEndShowIntro() {
-    stopSound(choir)
+    var click = new Audio("./assets/sounds/click.wav");
     playSound(click, 0)
     $('#bg-1').fadeIn('slow')
     $('#bg-2').fadeIn('slow')
