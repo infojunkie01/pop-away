@@ -32,7 +32,7 @@ textarea{
     border-color: #FFFFFF;
     border-radius: 6px 6px 6px 6px;
     border-width: .5px;
-    font-size: 1em;
+    font-size: 16px;
     line-height: 1.4em;
     padding: 5px 8px;
     transition: background-color 0.2s ease 0s;
@@ -78,9 +78,10 @@ section, #bg-1, #bg-2{
 
 #pop-bubble{
     position: relative;
+    overflow: hidden;
 }
 
-#pop-bubble p{
+.pop-bubble-instruction{
     margin-top: 3em;
     z-index: 5; 
     position: absolute;
@@ -94,11 +95,12 @@ section, #bg-1, #bg-2{
 }
 
 #bubble{
+    position: absolute;
     border-radius: 500px;
     z-index: 0; 
     padding: 0;
-    margin: auto;
     max-width: 100%;
+    width: 100%;
     border: none;
 }
 
@@ -115,6 +117,18 @@ section, #bg-1, #bg-2{
 
 #bubble-img:hover{
     cursor: pointer;
+}
+
+#bubble-text{
+    position: absolute;
+    margin: auto;
+    letter-spacing: 0;
+    font-size: 16px;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    opacity: .8;
 }
 
 
@@ -232,18 +246,33 @@ section, #bg-1, #bg-2{
     body{
         font-size: 18px;
     }
-    
-    #pop-bubble p{
-        margin-top: .5em;
+
+    .pop-bubble-instruction{
+        margin-top: 1em;
     }
 
-    #bubble{
-        margin-top: 3em;
+    button{
+        width: 100vw;
     }
 
-    #start, textarea, #submit, #btn-new, #btn-home {
+    #bubble-img{
+        max-width: 170vw;
+    }
+
+    #bubble-text{
+        width: 70%;
+        font-size: 12px;
+    }
+
+    #start, #submit, #btn-new, #btn-home {
         width: auto;
         margin: auto;
+    }
+
+    textarea{
+        width: 100%;
+        margin: auto;
+        font-size: 15px;
     }
 
     #btn-new, #btn-home{

@@ -2,6 +2,7 @@
 var harp = new Audio("./assets/sounds/harp.wav");
 harp.volume = 0.8;
 
+
 // some helper functions
 function playSound(sound, sec){
     sound.currentTime = sec;
@@ -21,7 +22,6 @@ function hideAndShowSections(current, next){
     }
 }
 
-
 // functions called in html
 function addFloatingClass(){
     $('#submit').addClass('floating')
@@ -33,6 +33,7 @@ function hideIntroShowNext() {
 
     $('#bg-1').fadeOut('slow')
     $('#bg-2').fadeOut('slow')
+    $('#bubble').prop('disabled', true);
     intro = $('#intro')
     textEntry = $('#text-entry')
     hideAndShowSections(intro, textEntry)
@@ -40,22 +41,36 @@ function hideIntroShowNext() {
 
 function hideTextEntryShowNext() {
     var click = new Audio("./assets/sounds/click.wav");
-
     playSound(click, 0)
     playSound(harp, 2)
     textEntry = $('#text-entry')
     popBubble = $('#pop-bubble')
     hideAndShowSections(textEntry, popBubble)
-
-    $('#textarea').val('');
-    $('#bubble').prop('disabled', false);
+    $('#bubble-text').show();
+    $("#bubble").show()  
     $('#bubble-img').attr('src', './assets/images/bubble.png');
     $('#submit').removeClass('floating')
-    $("#pop-bubble-text").show();
-    $("#bubble").show()
+    setTimeout(() => {
+        $("#pop-bubble-text-1").fadeIn('slow');
+    }, 1500)
+    setTimeout(() => {
+        $("#pop-bubble-text-2").fadeIn('slow');
+        $('#bubble').prop('disabled', false);
+    }, 3200)
+    
+ 
 }
 
+var textEntered = $( "#submit" ).click(function() {
+    const text = $('#textarea').val();
+    $('#bubble-text').text(text);
+});
+
 function hidePopBubbleShowNext() {
+    $('#textarea').val('');
+    $("#pop-bubble-text-1").hide();
+    $("#pop-bubble-text-2").hide();
+    $('#bubble-text').hide();
     var choir = new Audio("./assets/sounds/choir.wav");
     var pop = new Audio("./assets/sounds/pop.wav");
 
@@ -63,8 +78,6 @@ function hidePopBubbleShowNext() {
 
     stopSound(harp)
     playSound(pop, 0)
-
-    $('#bubble').prop('disabled', true);
 
     setTimeout(() => {
         $("#bubble").hide()
@@ -76,7 +89,7 @@ function hidePopBubbleShowNext() {
 
     setTimeout(() => {
         playSound(choir, 0)
-    }, 2000)
+    }, 1300)
 
     setTimeout(() => {
         popBubble = $('#pop-bubble')
@@ -90,6 +103,7 @@ function hideEndShowTextEntry() {
     playSound(click, 0)
     end = $('#end')
     textEntry = $('#text-entry')
+    $('#bubble').prop('disabled', true);
     hideAndShowSections(end, textEntry)
 }
 

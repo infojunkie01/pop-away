@@ -33,7 +33,7 @@
             Write it down what's on your mind to turn it into a bubble:
         </p>
         <Br>
-        <textarea id="textarea" class="pt-2" placeholder="Enter text here" onfocus="addFloatingClass()"></textarea>
+        <textarea id="textarea" class="pt-2" maxlength="250" placeholder="Enter text here. (Max length 250 characters)" onfocus="addFloatingClass()"></textarea>
         <p id="note" class="mt-3">(Text entered will not be stored.)</p>
         <Br>
         <button  id="submit" class="mt-2" onclick="hideTextEntryShowNext()">CREATE BUBBLE</button>
@@ -43,8 +43,14 @@
     <section id="pop-bubble" class="container" style="display: none">
         <button id="bubble" class="row justify-content-center" onclick="hidePopBubbleShowNext()">
             <img id="bubble-img" class="floating" src="./assets/images/bubble.png" alt="Static Image" data-alt="./assets/images/bubble.gif">
+            <p id="bubble-text" class="justify-content-center floating"></p>
+            </img>
+           
         </button>
-        <p id="pop-bubble-text" class="row justify-content-center">Take a deep breath. Click to pop the bubble.</p>
+        <div class="pop-bubble-instruction justify-content-center">
+            <p id="pop-bubble-text-1" style="display: none">Take a deep breath.</p>
+            <p id="pop-bubble-text-2" style="display: none">Click to pop the bubble:</p>
+        </div>
     </section>
 
     <section id="end" class="container" style="display: none">
