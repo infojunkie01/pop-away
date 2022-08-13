@@ -44,12 +44,10 @@ textarea{
 
 #bg-1{
     background-image: url("../assets/images/desktop-bg-1.png");
-    opacity: .5;
 }
 
 #bg-2{
     background-image: url("../assets/images/desktop-bg-2.png");
-    opacity: .5;
 }
 
 #bg-1, #bg-2{
