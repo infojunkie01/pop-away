@@ -82,7 +82,6 @@ section, #bg-1, #bg-2{
 .pop-bubble-instruction{
     margin-top: 3em;
     z-index: 5; 
-    position: absolute;
     top: 5%;
     width: 100%;
     text-align: center;
